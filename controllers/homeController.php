@@ -18,11 +18,11 @@ class homeController extends controller {
                     echo "true";
                     //$true = array('logar', 'true');
 
-                    //$dados = $users->getInfoUser();
+                    $dados = $users->getInfoUser();
 
                     //$dados = array_merge($dados, array('login' => 'true'));
 
-                    //echo json_encode($dados);
+                    echo json_encode($dados);
                 } else {
                     //$dados = array('logar' => 'erro');
                     //echo json_encode($dados);
