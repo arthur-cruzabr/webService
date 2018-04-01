@@ -11,7 +11,7 @@ class homeController extends controller {
         $dados = array();
         if(isset($_POST['u_user']) && !empty($_POST['u_user'])) {
             //if(filter_var($_POST['u_login'], FILTER_VALIDATE_EMAIL)) {
-                $email = $this->antSql($_POST['u_userl']);
+                $email = $this->antSql($_POST['u_user']);
                 $senha = $this->antSql($_POST['u_pass']);
                 $users = new users();
                 if($users->logar($email, $senha)) {
