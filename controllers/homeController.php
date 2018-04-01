@@ -8,7 +8,7 @@ class homeController extends controller {
     }
 
     public function logar() {
-        $dados = array();
+      $dados = array();
         if(isset($_POST['u_user']) && !empty($_POST['u_user'])) {
             //if(filter_var($_POST['u_login'], FILTER_VALIDATE_EMAIL)) {
                 $email = $this->antSql($_POST['u_user']);
@@ -19,10 +19,21 @@ class homeController extends controller {
                     //$true = array('logar', 'true');
 
                     $dados = $users->getInfoUser();
+                  //  echo $dados['u_id'];
 
-                    //$dados = array_merge($dados, array('login' => 'true'));
+                    $infouser = array("u_id"       => $dados['u_id'],
+                                      "u_username" => $dados['u_username'],
+                                      "u_fone"     => $dados['u_fone'],
+                                      "u_email"    => $dados['u_email'],
+                                      'erro'       => 'false',
+                                      'message'    => 'Login Successful'
+                    );
+                    echo json_encode($infouser);
+                    //echo json_encode(array());
 
-                    echo json_encode($dados);
+                    //print_r($infouser);
+                    //echo json_encode($dados, array('erro' => 'false', 'message' => 'Login Successful'));
+                   //echo json_encode(array('erro' => 'false', 'message' => 'Login Successful'));
                 } else {
                     //$dados = array('logar' => 'erro');
                     //echo json_encode($dados);
@@ -31,7 +42,7 @@ class homeController extends controller {
             //}
         }
 
-        //$this->loadView('login');
+        $this->loadView('login');
     }
 
     public function cadastro() {
