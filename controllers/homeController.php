@@ -31,7 +31,7 @@ class homeController extends controller {
             //}
         }
 
-        $this->loadView('login');
+        //$this->loadView('login');
     }
 
     public function cadastro() {
