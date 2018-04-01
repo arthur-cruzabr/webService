@@ -22,7 +22,7 @@ class homeController extends controller {
 
                     //$dados = array_merge($dados, array('login' => 'true'));
 
-                    echo json_encode($dados);
+                    //echo json_encode($dados);
                 } else {
                     //$dados = array('logar' => 'erro');
                     //echo json_encode($dados);
