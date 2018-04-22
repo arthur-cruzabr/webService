@@ -47,14 +47,14 @@ class homeController extends controller {
 
     public function cadastro() {
 
-        if (isset($_POST['u_name']) && !empty($_POST['u_name'])) {
-            if (!empty($_POST['u_username']) && !empty($_POST['u_email']) && !empty($_POST['u_pass']) && !empty($_POST['u_fone'])) {
+        if (isset($_POST['name']) && !empty($_POST['name'])) {
+            if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['fone'])) {
                 $user       = new users();
-                $u_name     = $this->antSql($_POST['u_name']);
-                $u_username = $this->antSql($_POST['u_username']);
-                $u_email    = $this->antSql($_POST['u_email']);
-                $u_password = $this->antSql($_POST['u_pass']);
-                $u_fone     = $this->antSql($_POST['u_fone']);
+                $u_name     = $this->antSql($_POST['name']);
+                $u_username = $this->antSql($_POST['username']);
+                $u_email    = $this->antSql($_POST['email']);
+                $u_password = $this->antSql($_POST['password']);
+                $u_fone     = $this->antSql($_POST['fone']);
 
                 if ($user->getUserExists($u_email)) {
                     $user->setUser($u_name, $u_username, $u_email, $u_password, $u_fone);
