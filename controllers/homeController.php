@@ -9,35 +9,27 @@ class homeController extends controller {
 
     public function logar() {
       $dados = array();
-        if(isset($_POST['u_user']) && !empty($_POST['u_user'])) {
+        if(isset($_POST['acesso']) && !empty($_POST['acesso'])) {
             //if(filter_var($_POST['u_login'], FILTER_VALIDATE_EMAIL)) {
-                $email = $this->antSql($_POST['u_user']);
-                $senha = $this->antSql($_POST['u_pass']);
+                $email = $this->antSql($_POST['acesso']);
+                $senha = $this->antSql($_POST['senha']);
                 $users = new users();
                 if($users->logar($email, $senha)) {
-                    echo "true";
-                    //$true = array('logar', 'true');
-
                     $dados = $users->getInfoUser();
-                  //  echo $dados['u_id'];
-
                     $infouser = array("u_id"       => $dados['u_id'],
                                       "u_username" => $dados['u_username'],
                                       "u_fone"     => $dados['u_fone'],
                                       "u_email"    => $dados['u_email'],
-                                      'erro'       => 'false',
-                                      'message'    => 'Login Successful'
-                    );
-                    echo json_encode($infouser);
-                    //echo json_encode(array());
+                                      "result"     => "success",
+                                      "message"    => "Login Successful"
 
-                    //print_r($infouser);
-                    //echo json_encode($dados, array('erro' => 'false', 'message' => 'Login Successful'));
-                   //echo json_encode(array('erro' => 'false', 'message' => 'Login Successful'));
+                    );
+
+                    echo json_encode($infouser);
                 } else {
-                    //$dados = array('logar' => 'erro');
-                    //echo json_encode($dados);
-                    echo "false";
+                    $infouser["result"] = "success";
+                    $infouser["message"] = "Login Successful";
+                    echo json_encode($infouser);
                 }
             //}
         }
@@ -47,13 +39,13 @@ class homeController extends controller {
 
     public function cadastro() {
 
-        if (isset($_POST['name']) && !empty($_POST['name'])) {
-            if (!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['fone'])) {
+        if (isset($_POST['nome']) && !empty($_POST['nome'])) {
+            if (!empty($_POST['nome']) && !empty($_POST['email']) && !empty($_POST['senha']) && !empty($_POST['fone'])) {
                 $user       = new users();
-                $u_name     = $this->antSql($_POST['name']);
+                $u_name     = $this->antSql($_POST['nome']);
                 $u_username = $this->antSql($_POST['username']);
                 $u_email    = $this->antSql($_POST['email']);
-                $u_password = $this->antSql($_POST['password']);
+                $u_password = $this->antSql($_POST['senha']);
                 $u_fone     = $this->antSql($_POST['fone']);
 
                 if ($user->getUserExists($u_email)) {
